@@ -24,9 +24,9 @@ Minimizer's turn: (So far nothing happened yet)
 Each of these scenarios gives the following:
 
 <p float="left">
-  <img src="https://github.com/shr0mi/tic-tac-toe-minimaxai/blob/main/Images/image2.png" width="300" height="275" />
-  <img src="https://github.com/shr0mi/tic-tac-toe-minimaxai/blob/main/Images/image3.png" width="300" height="275" />
-  <img src="https://github.com/shr0mi/tic-tac-toe-minimaxai/blob/main/Images/image4.png" width="300" height="275" />
+  <img src="https://github.com/shr0mi/tic-tac-toe-minimaxai/blob/main/Images/image2.png" width="250" height="225" />
+  <img src="https://github.com/shr0mi/tic-tac-toe-minimaxai/blob/main/Images/image3.png" width="250" height="225" />
+  <img src="https://github.com/shr0mi/tic-tac-toe-minimaxai/blob/main/Images/image4.png" width="250" height="225" />
 </p>
 
 minimizer would choose the path that give computer lowest chance of winning. In this case it would choose the third path. 
