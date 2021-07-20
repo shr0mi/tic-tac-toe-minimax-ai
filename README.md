@@ -20,3 +20,18 @@ Blue is minimizer (Human) and red is maximizer (Computer).
 Minimizer's turn: (So far nothing happened yet)
 
 <img src="https://github.com/shr0mi/tic-tac-toe-minimaxai/blob/main/Images/image844-83.png" width="400" height="300" />
+
+Each of these scenarios gives the following:
+
+<p float="left">
+  <img src="https://github.com/shr0mi/tic-tac-toe-minimaxai/blob/main/Images/image2.png" width="300" height="275" />
+  <img src="https://github.com/shr0mi/tic-tac-toe-minimaxai/blob/main/Images/image3.png" width="300" height="275" />
+  <img src="https://github.com/shr0mi/tic-tac-toe-minimaxai/blob/main/Images/image4.png" width="300" height="275" />
+</p>
+
+minimizer would choose the path that give computer lowest chance of winning. In this case it would choose the third path. 
+
+The game scenario prediction will look like this:(blue is minimizer, red is maximizer)
+
+<img src="https://github.com/shr0mi/tic-tac-toe-minimaxai/blob/main/Images/image5.png" width="600" height="500" />
+ 
