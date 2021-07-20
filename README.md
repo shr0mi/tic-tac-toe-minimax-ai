@@ -18,3 +18,5 @@ Before every computer move the minimax algorithm recursively goes through the wh
 Blue is minimizer (Human) and red is maximizer (Computer).
 
 Minimizer's turn: (So far nothing happened yet)
+
+<img src="https://github.com/shr0mi/tic-tac-toe-minimaxai/blob/main/Images/image844-83.png" width="400" height="300" />
