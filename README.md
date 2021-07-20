@@ -35,3 +35,4 @@ The game scenario prediction will look like this:(blue is minimizer, red is maxi
 
 <img src="https://github.com/shr0mi/tic-tac-toe-minimaxai/blob/main/Images/image5.png" width="600" height="500" />
  
+ -shromi
