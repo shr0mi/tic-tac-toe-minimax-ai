@@ -5,9 +5,6 @@ let board = [
 [0, 0, 0]
 ];
 
-//Counts the number of steps
-step = 0;
-
 //The winner. 1 means cross and -1 means golla
 let winner = null
 
@@ -21,11 +18,14 @@ let bestMove = [];
 //Button Click fires this function
 function buttonToImageSwap(row, column) {
 	if(winner == null){
+		//Set UI
 		document.getElementById('button' + 'Row' + row + 'Col' + column).remove();
-  		
   		document.getElementById('cross' + 'Row' + row + 'Col' + column).style.display="block";
+
+  		//Place move in board
   		board[row][column] = 1;
   		
+  		//Check if the game is already over
   		checkRow(board);
   		checkColumn(board);
   		checkCorners(board);
@@ -36,9 +36,7 @@ function buttonToImageSwap(row, column) {
   		if(winner == null){
   			aiMove();
   		}
-  		
-  		
-	}
+  	}
 }
 
 //Checks Row
@@ -65,7 +63,7 @@ function checkColumn(checkBoard){
 	}
 }
 
-//Check Corners
+//Check Corners/Diagonals
 function checkCorners(checkBoard){
 	
 	if (checkBoard[0][0] == checkBoard[1][1] && checkBoard[1][1] == checkBoard[2][2] && checkBoard[2][2] != 0) {
@@ -100,7 +98,7 @@ function checkDraw(checkBoard){
 
 }
 
-//Check Winner
+//Announce Winner
 function checkWinner(){
 	if(winner != null){
 		if(winner == 1){
@@ -116,20 +114,19 @@ function checkWinner(){
 }
 
 
-
-//AI Plays (Randomly)
+//AI Plays
 function aiMove(){
 
-	
 	findBestMove();
 	
-
-
-  	document.getElementById('button' + 'Row' + bestMove[0] + 'Col' + bestMove[1]).remove();
+	//Set UI
+	document.getElementById('button' + 'Row' + bestMove[0] + 'Col' + bestMove[1]).remove();
   	document.getElementById('golla' + 'Row' + bestMove[0] + 'Col' + bestMove[1]).style.display="block";
+
+  	//Place move in board
   	board[bestMove[0]][bestMove[1]] = -1;
 	
-  	
+  	//Check if the game is already over
   	checkRow(board);
   	checkColumn(board);
   	checkCorners(board);
@@ -137,26 +134,36 @@ function aiMove(){
   	checkWinner();
 }
   	
-  	
-
-
-
-
-
+//Count how many steps is it needed for ai to win  	
+let step;
 
 //Find best move
 function findBestMove(){
 	let bestScore = -Infinity;
+	let leastStep = Infinity;
 	let tempMove;
 	for(let i=0; i<3; i++){
 		for(let j=0; j<3; j++){
 			if(board[i][j] == 0){
 				board[i][j] = -1;
-				let score = minimax(board, false);
+				step = 0;
+				let score = minimax(board, step, false);
 				board[i][j] = 0;
-				if(score > bestScore){
-					bestScore = score;
-					tempMove = [i, j];
+
+				if(score >= bestScore){
+					if(score > bestScore){
+						bestScore = score;
+						leastStep = step;
+						bestScore = score;
+						tempMove = [i, j];
+					}
+					else{
+						if(step < leastStep){
+							leastStep = step;
+							bestScore = score;
+							tempMove = [i, j];
+						}
+					}
 				}
 			}
 		}
@@ -165,11 +172,9 @@ function findBestMove(){
 
 }
 
-function minimax(testBoard, isMaximizer){
+function minimax(testBoard, depth, isMaximizer){
 	
-	//console.log(testBoard.toString());
-	
-	
+	//Check who won in the test board. Return 1 if AI won, return 0 if it was draw and return -1 if player won
 	checkDraw(testBoard);
 	checkRow(testBoard);
   	checkColumn(testBoard);
@@ -186,16 +191,18 @@ function minimax(testBoard, isMaximizer){
   			result = 0;
   		}
   		winner = null;
+  		step = depth;
   		return result;
   	}
   	
+  	//The Ai is the maximizing player
   	if(isMaximizer){
   		let bestScore = -Infinity;
 		for(let i=0; i<3; i++){
 			for(let j=0; j<3; j++){
 				if(testBoard[i][j] == 0){
 					testBoard[i][j] = -1;
-					let score = minimax(testBoard, false);
+					let score = minimax(testBoard, depth + 1, false);
 					testBoard[i][j] = 0;
 					bestScore = Math.max(bestScore, score);
 				}
@@ -203,13 +210,15 @@ function minimax(testBoard, isMaximizer){
 		}
 		return bestScore;
   	}
+
+  	//The Human is the minimizing player
   	else{
   		let bestScore = Infinity;
 		for(let i=0; i<3; i++){
 			for(let j=0; j<3; j++){
 				if(testBoard[i][j] == 0){
 					testBoard[i][j] = 1;
-					let score = minimax(testBoard, true);
+					let score = minimax(testBoard, depth + 1, true);
 					testBoard[i][j] = 0;
 					bestScore = Math.min(bestScore, score);
 				}
@@ -217,9 +226,5 @@ function minimax(testBoard, isMaximizer){
 		}
 		return bestScore;
   	}
-  		
-  	
-
 }
-
 
