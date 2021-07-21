@@ -1,5 +1,5 @@
 # tic-tac-toe-minimaxai
-This is one of my first javascript project. Check it out at: [Tic-Tac-Toe](https://shr0mi.github.io/tic-tac-toe-minimaxai/)
+This is one of my first javascript project. Check it out at: [Tic-Tac-Toe](https://shr0mi.github.io/tic-tac-toe-minimax-ai/)
 
 A simple tic-tac-toe game where computer uses minimax algorithm to find the fastest and the best possible move to win (or atleast to make a draw).
 
